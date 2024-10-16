@@ -10,6 +10,16 @@ async function init() {
   authClient = await AuthClient.create();
   const isAuthenticated = await authClient.isAuthenticated();
 
+  const themeSwitch = document.getElementById('theme-switch');
+  themeSwitch.addEventListener('change', toggleTheme);
+
+  // Load saved theme preference
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  if (savedTheme === 'dark') {
+    themeSwitch.checked = true;
+  }
+
   if (isAuthenticated) {
     handleAuthenticated();
   } else {
@@ -113,6 +123,16 @@ async function loadPosts() {
   } catch (error) {
     console.error('Error loading posts:', error);
     postsDiv.innerHTML = 'Failed to load posts.';
+  }
+}
+
+function toggleTheme(event) {
+  if (event.target.checked) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');
   }
 }
 

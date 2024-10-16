@@ -1,13 +1,43 @@
+/* Define default (light theme) colors */
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --header-background: #f8f9fa;
+  --post-border: #ccc;
+  --modal-background: #fefefe;
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --header-background: #1e1e1e;
+  --post-border: #333;
+  --modal-background: #1e1e1e;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--header-background);
+  padding: 10px 20px;
 }
 
 #login-section {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
+  /* Adjusted to be within the header */
+}
+
+#theme-toggle {
+  /* Theme toggle styles */
 }
 
 #blog {
@@ -22,7 +52,7 @@ body {
 }
 
 .post {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--post-border);
   padding: 20px 0;
 }
 
@@ -48,11 +78,12 @@ body {
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: var(--modal-background);
   margin: 50px auto;
   padding: 20px;
   border: 1px solid #888;
   max-width: 600px;
+  color: var(--text-color);
 }
 
 #close-modal {
@@ -65,9 +96,68 @@ body {
 #editor {
   height: 200px;
   margin-bottom: 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* Toggle Switch Styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded slider */
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }

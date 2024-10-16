@@ -1,0 +1,12 @@
+type Post = 
+ record {
+   author: principal;
+   body: text;
+   id: nat;
+   timestamp: int;
+   title: text;
+ };
+service : {
+  createPost: (text, text) -> (nat);
+  getPosts: () -> (vec Post) query;
+}

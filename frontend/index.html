@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto Blog</title>
+  <link rel="stylesheet" href="index.css">
+  <!-- Include Quill stylesheet -->
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+</head>
+<body>
+  <div id="login-section">
+    <button id="login-button">Log In</button>
+  </div>
+  <div id="blog">
+    <button id="new-post-button">New Post</button>
+    <div id="posts"></div>
+  </div>
+
+  <!-- New Post Form -->
+  <div id="new-post-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-modal">&times;</span>
+      <h2>New Post</h2>
+      <input type="text" id="post-title" placeholder="Title">
+      <div id="editor"></div>
+      <button id="submit-post-button">Submit</button>
+    </div>
+  </div>
+
+  <!-- Include Quill library -->
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <script type="module" src="index.js"></script>
+</body>
+</html>
